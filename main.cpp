@@ -13,6 +13,8 @@ EventQueue queue(32 * EVENTS_EVENT_SIZE);
 
 Thread t;
 
+Serial pc(USBTX, USBRX);
+
 
 int song[42] = {
 
@@ -47,7 +49,7 @@ int noteLength[42] = {
 void playNote(int freq)
 
 {
-
+    pc.printf("%d",kAudioSampleFrequency);
   for (int i = 0; i < kAudioTxBufferSize; i++)
 
   {
@@ -72,7 +74,7 @@ void playNote(int freq)
 int main(void)
 
 {
-
+    pc.printf("%d",kAudioTxBufferSize);
   t.start(callback(&queue, &EventQueue::dispatch_forever));
 
 
